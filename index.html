@@ -517,6 +517,39 @@
       max-width: 830px;
     }
 
+
+    .conference-note {
+      max-width: 830px;
+      margin-top: 20px;
+      padding: 18px 20px;
+      border: 1px solid rgba(0,212,184,.24);
+      border-left: 3px solid var(--accent-2, var(--cyan));
+      border-radius: 14px;
+      background: linear-gradient(110deg, rgba(0,212,184,.07), rgba(79,140,255,.045));
+    }
+    .conference-note-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .conference-note a {
+      color: var(--text);
+      font-weight: 700;
+      text-decoration-color: rgba(0,212,184,.7);
+      text-underline-offset: 4px;
+    }
+    .conference-note a:hover { color: var(--accent-2, var(--cyan)); }
+    .conference-note-date {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
     .meta-card {
       border: 1px solid var(--border);
       background: var(--card);
@@ -1197,6 +1230,11 @@
             <div class="meta-label">Dates</div>
             <div class="meta-value">13–15 April 2027</div>
           </div>
+        </div>
+        <div class="conference-note">
+          <span class="conference-note-label">In conjunction with</span>
+          <a href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener noreferrer">The 18th International Conference on Ambient Systems, Networks and Technologies ↗</a>
+          <span class="conference-note-date">April 13–15, 2027 · Delft, the Netherlands</span>
         </div>
         </div>
 
