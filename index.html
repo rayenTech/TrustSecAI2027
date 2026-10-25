@@ -34,6 +34,61 @@
       line-height: 1.65;
       overflow-x: hidden;
     }
+    
+.dynamic-title {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.dynamic-line {
+  display: block;
+  margin-top: 8px;
+  color: #7ba7ff;
+}
+
+#dynamic-word {
+  display: inline-block;
+  background: linear-gradient(90deg, #7ba7ff, #00d4b8, #a06bff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 4s linear infinite;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  will-change: opacity, transform;
+}
+
+#dynamic-word.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.typing-cursor {
+  color: #00d4b8;
+  animation: cursor-blink 0.8s steps(2, start) infinite;
+}
+
+@keyframes gradient-flow {
+  to { background-position: 200% center; }
+}
+
+@keyframes cursor-blink {
+  to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 
     .bg {
       position: fixed;
@@ -67,8 +122,28 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(18px);
-      background: rgba(7,11,22,.72);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(7,11,22,.78);
       border-bottom: 1px solid var(--border);
+      transition: background .25s ease, box-shadow .25s ease;
+    }
+
+    header.is-scrolled {
+      background: rgba(7,11,22,.94);
+      box-shadow: 0 12px 36px rgba(0,0,0,.22);
+    }
+
+    .scroll-progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 2px;
+      pointer-events: none;
+      transform-origin: left center;
+      transform: scaleX(0);
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      box-shadow: 0 0 12px rgba(0,212,184,.45);
     }
 
     .nav {
@@ -80,26 +155,42 @@
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
+      min-width: 0;
       font-family: "Sora", sans-serif;
       font-weight: 700;
       letter-spacing: -.02em;
       text-decoration: none;
       color: var(--text);
+      flex-shrink: 0;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
       display: grid;
       place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #04101f;
-      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(79,140,255,.22), rgba(0,212,184,.18));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 0 24px rgba(79,140,255,.12);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
+
+    .brand:hover .brand-mark {
+      transform: translateY(-2px) rotate(-3deg);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 0 28px rgba(0,212,184,.22);
+    }
+
+    .brand-mark svg { width: 29px; height: 29px; display: block; }
+
+    .brand-copy { display: flex; flex-direction: column; line-height: 1.2; gap: 4px; min-width: 0; }
+    .brand-title { display: flex; flex-direction: column; gap: 2px; font-size: .94rem; font-weight: 750; letter-spacing: -.025em; white-space: nowrap; }
+    .brand-title span:last-child { color: #7ba7ff; }
+    .brand-subtitle { color: var(--muted); font: 500 .62rem/1.2 "Inter", sans-serif; letter-spacing: .09em; text-transform: uppercase; }
 
     .nav-links {
       display: flex;
@@ -109,19 +200,62 @@
     }
 
     .nav-links a {
+      position: relative;
       color: var(--muted);
       text-decoration: none;
-      font-size: .92rem;
-      font-weight: 500;
-      padding: 9px 13px;
+      font-size: .88rem;
+      font-weight: 550;
+      padding: 10px 12px;
       border-radius: 999px;
-      transition: .2s ease;
+      transition: color .2s ease, background .2s ease;
+      white-space: nowrap;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a[aria-current="location"] {
       color: white;
-      background: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.07);
     }
+
+    .nav-links a[aria-current="location"]:not(.cta)::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 3px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+
+    .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
 
     .cta {
       color: #04101f !important;
@@ -606,13 +740,48 @@
     @media (max-width: 900px) {
       .cards, .topics, .tpc-grid { grid-template-columns: repeat(2, 1fr); }
       .submission, .organizers, .hero-meta { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+      .nav { position: relative; padding: 12px 0; }
+      .menu-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        padding: 12px;
+        gap: 5px;
+        flex-direction: column;
+        align-items: stretch;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(7,11,22,.97);
+        box-shadow: 0 18px 44px rgba(0,0,0,.34);
+      }
+      .nav-links.is-open { display: flex; animation: menu-in .18s ease both; }
+      .nav-links a { padding: 12px 14px; }
+      .nav-links a[aria-current="location"]:not(.cta)::after { left: 14px; right: auto; width: 28px; bottom: 5px; }
+    }
+
+    @keyframes menu-in {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 620px) {
       .cards, .topics, .tpc-grid { grid-template-columns: 1fr; }
       .hero { padding: 70px 0 55px; }
       section { padding: 58px 0; }
+      .brand { gap: 9px; min-width: 0; }
+      .brand-mark { width: 40px; height: 40px; flex-basis: 40px; border-radius: 12px; }
+      .brand-title { font-size: clamp(.68rem, 2.6vw, .82rem); white-space: normal; }
+      .brand-subtitle { font-size: .52rem; letter-spacing: .055em; }
+    }
+
+    @media (max-width: 380px) {
+      .brand-subtitle { display: none; }
+      .brand-title { white-space: normal; max-width: 205px; font-size: .72rem; }
+      .brand-mark { width: 36px; height: 36px; flex-basis: 36px; }
+      .brand-mark svg { width: 26px; height: 26px; }
     }
   </style>
 </head>
@@ -620,20 +789,37 @@
   <div class="bg"></div>
   <div class="grid"></div>
 
-  <header>
+  <header id="site-header">
     <div class="container nav">
-      <a class="brand" href="#top">
-        <span class="brand-mark">AI</span>
-        <span>AI Security &amp; Trustworthy<br>Autonomous Cybersecurity</span>
+      <a class="brand" href="#top" aria-label="AI Security and Trustworthy Autonomous Cybersecurity — home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 3.8 33 8.7v9.6c0 8.2-5.2 14.4-13 18-7.8-3.6-13-9.8-13-18V8.7L20 3.8Z" stroke="url(#shield-gradient)" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M13 24.8 20 12l7 12.8M15.7 20.1h8.6" stroke="#EAF7FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20" cy="28.5" r="2" fill="#00D4B8"/>
+            <defs><linearGradient id="shield-gradient" x1="7" y1="5" x2="34" y2="35" gradientUnits="userSpaceOnUse"><stop stop-color="#4F8CFF"/><stop offset="1" stop-color="#00D4B8"/></linearGradient></defs>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-title">
+            <span>AI Security &amp; Trustworthy</span>
+            <span>Autonomous Cybersecurity</span>
+          </span>
+          <span class="brand-subtitle">ANT &amp; EDI 2027 · Workshop</span>
+        </span>
       </a>
-      <nav class="nav-links">
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="site-navigation" aria-label="Main navigation">
         <a href="#about">About</a>
         <a href="#topics">Topics</a>
         <a href="#cfp">Call for Papers</a>
         <a href="#organizers">Organizers</a>
-        <a class="cta" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">Conference</a>
+        <a class="cta" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">Conference ↗</a>
       </nav>
     </div>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   </header>
 
   <main id="top">
@@ -694,7 +880,14 @@
       <div class="container">
         <div class="section-head reveal">
           <div class="eyebrow">About the Workshop</div>
-          <h2>AI is transforming cybersecurity—and creating new risks</h2>
+        
+<h2 class="dynamic-title">
+  Beyond Detection.
+  <span class="dynamic-line">
+    Toward <span id="dynamic-word">Autonomous Defense</span><span class="typing-cursor">|</span>
+  </span>
+</h2>
+
           <p>
             Artificial intelligence is reshaping threat detection, security operations, and autonomous
             cyber defense. At the same time, it introduces challenges related to adversarial manipulation,
@@ -857,7 +1050,7 @@
         <div>
           <h3>Mihaela Curca</h3>
           <p>Workshop Co-Chair</p>
-          <p>The Romanian National Cyber Security Directorate, Romania</p>
+          <p>The Romanian National Cyber Security Directorate, Romania; European Commission, European Union</p>
           <a class="person-link" href="https://www.linkedin.com/in/mihaela-curca-797671101" target="_blank" rel="noopener">
             LinkedIn ↗
           </a>
@@ -872,7 +1065,7 @@
         <div class="section-head reveal">
           <div class="eyebrow">Technical Program Committee</div>
           <h2>Tentative TPC</h2>
-          <p>The following list reflects the current workshop proposal and remains subject to confirmation.</p>
+          <p>The workshop's Technical Program Committee (TPC) brings together experts from academia, industry, and cybersecurity organizations to support the scientific quality and technical scope of the workshop.</p>
         </div>
 
         <div class="tpc-grid reveal">
@@ -959,19 +1152,43 @@
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Countdown to workshop start: 13 April 2027, 09:00 Amsterdam time
-    const workshopDate = new Date("2027-04-13T09:00:00+02:00").getTime();
+    // Countdown to the workshop in Delft (local Amsterdam time, UTC+02:00).
+    const workshopStart = new Date("2027-04-13T09:00:00+02:00").getTime();
+    const workshopEnd = new Date("2027-04-15T23:59:59+02:00").getTime();
+    const countdown = document.getElementById("countdown");
+    let countdownInterval;
+
+    function showCountdownMessage(state, title, label) {
+      if (countdown.dataset.state === state) return;
+      countdown.dataset.state = state;
+      countdown.innerHTML =
+        `<div class="count-box" style="grid-column:1/-1"><div class="count-value">${title}</div><div class="count-label">${label}</div></div>`;
+    }
 
     function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = workshopDate - now;
+      const now = Date.now();
 
-      if (distance <= 0) {
-        document.getElementById("countdown").innerHTML =
-          '<div class="count-box" style="grid-column:1/-1"><div class="count-value">The workshop is happening!</div><div class="count-label">13–15 April 2027 · Delft, Netherlands</div></div>';
+      if (now > workshopEnd) {
+        showCountdownMessage(
+          "ended",
+          "The workshop has concluded",
+          "13–15 April 2027 · Delft, Netherlands"
+        );
+        if (countdownInterval) window.clearInterval(countdownInterval);
         return;
       }
 
+      if (now >= workshopStart) {
+        showCountdownMessage(
+          "underway",
+          "The workshop is underway!",
+          "13–15 April 2027 · Delft, Netherlands"
+        );
+        return;
+      }
+
+      countdown.dataset.state = "counting";
+      const distance = workshopStart - now;
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -984,7 +1201,100 @@
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+    countdownInterval = window.setInterval(updateCountdown, 1000);
+
+    // Rotate the highlighted phrase with a smooth fade-and-slide transition.
+    // Keep the first phrase static for visitors who prefer reduced motion.
+    const words = [
+      "Autonomous Defense",
+      "Trustworthy AI",
+      "Intelligent Security",
+      "Resilient Networks"
+    ];
+
+    const dynamicWord = document.getElementById("dynamic-word");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (dynamicWord && !prefersReducedMotion) {
+      let wordIndex = 0;
+      window.setInterval(() => {
+        dynamicWord.classList.add("is-changing");
+        window.setTimeout(() => {
+          wordIndex = (wordIndex + 1) % words.length;
+          dynamicWord.textContent = words[wordIndex];
+          dynamicWord.classList.remove("is-changing");
+        }, 280);
+      }, 2800);
+    }
+
+    // Responsive navigation: accessible mobile menu that closes after selection.
+    const siteHeader = document.getElementById("site-header");
+    const menuToggle = document.getElementById("menu-toggle");
+    const siteNavigation = document.getElementById("site-navigation");
+    const scrollProgress = document.getElementById("scroll-progress");
+
+    function closeNavigation() {
+      if (!menuToggle || !siteNavigation) return;
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation menu");
+      siteNavigation.classList.remove("is-open");
+    }
+
+    if (menuToggle && siteNavigation) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+        siteNavigation.classList.toggle("is-open", !isOpen);
+      });
+
+      siteNavigation.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", closeNavigation);
+      });
+
+      document.addEventListener("click", event => {
+        if (!siteHeader.contains(event.target)) closeNavigation();
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeNavigation();
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) closeNavigation();
+      });
+    }
+
+    // Subtle sticky-header state and scroll progress indicator.
+    function updateHeaderOnScroll() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+      if (siteHeader) siteHeader.classList.toggle("is-scrolled", window.scrollY > 12);
+      if (scrollProgress) scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+    }
+    window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
+    updateHeaderOnScroll();
+
+    // Highlight the navigation item for the section currently in view.
+    const sectionLinks = Array.from(document.querySelectorAll('#site-navigation a[href^="#"]'));
+    const trackedSections = sectionLinks
+      .map(link => ({ link, section: document.querySelector(link.getAttribute("href")) }))
+      .filter(item => item.section);
+
+    if ("IntersectionObserver" in window && trackedSections.length) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          trackedSections.forEach(item => {
+            if (item.section === entry.target) item.link.setAttribute("aria-current", "location");
+            else item.link.removeAttribute("aria-current");
+          });
+        });
+      }, { rootMargin: "-25% 0px -60% 0px", threshold: 0 });
+      trackedSections.forEach(item => sectionObserver.observe(item.section));
+    }
+
   </script>
+  
 </body>
 </html>
