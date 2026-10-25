@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +13,8 @@
   <style>
     :root {
       --bg: #070b16;
-      --bg-soft: #0c1224;
-      --card: rgba(255, 255, 255, 0.05);
-      --border: rgba(255, 255, 255, 0.12);
+      --card: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.12);
       --text: #e8edf7;
       --muted: #a7b0c3;
       --accent: #4f8cff;
@@ -26,7 +24,6 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -134,7 +131,6 @@
 
     .hero {
       padding: 96px 0 72px;
-      position: relative;
     }
 
     .pill {
@@ -156,6 +152,12 @@
       border-radius: 50%;
       background: var(--accent-2);
       box-shadow: 0 0 0 5px rgba(0,212,184,.14);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(0,212,184,.12); }
+      50% { box-shadow: 0 0 0 9px rgba(0,212,184,.03); }
     }
 
     h1 {
@@ -197,7 +199,7 @@
       text-decoration: none;
       font-weight: 650;
       font-size: .97rem;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
     .btn-primary {
@@ -213,6 +215,37 @@
     }
 
     .btn:hover { transform: translateY(-2px); }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 640px;
+      margin-bottom: 36px;
+    }
+
+    .count-box {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 16px;
+      padding: 18px 10px;
+      text-align: center;
+    }
+
+    .count-value {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .count-label {
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: 8px;
+    }
 
     .hero-meta {
       display: grid;
@@ -246,7 +279,7 @@
     }
 
     .section-head {
-      max-width: 760px;
+      max-width: 780px;
       margin-bottom: 38px;
     }
 
@@ -323,7 +356,6 @@
       background: rgba(255,255,255,.04);
       border-radius: 14px;
       padding: 15px 17px;
-      color: var(--text);
       font-size: .95rem;
       transition: .2s ease;
     }
@@ -378,6 +410,49 @@
       font-weight: 650;
     }
 
+    .netherlands {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(79,140,255,.18), transparent 35%),
+        radial-gradient(circle at 80% 70%, rgba(255,121,63,.14), transparent 35%),
+        var(--bg);
+    }
+
+    .netherlands h2 {
+      font-size: clamp(2.3rem, 6vw, 4rem);
+      margin-bottom: 14px;
+    }
+
+    .netherlands p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 30px;
+    }
+
+    .flag {
+      display: inline-flex;
+      gap: 4px;
+      margin-bottom: 22px;
+    }
+
+    .flag span {
+      width: 14px;
+      height: 42px;
+      border-radius: 4px;
+      animation: wave 2.6s ease-in-out infinite;
+    }
+
+    .flag span:nth-child(1) { background: #ae1c28; animation-delay: 0s; }
+    .flag span:nth-child(2) { background: #ffffff; animation-delay: .15s; }
+    .flag span:nth-child(3) { background: #21468b; animation-delay: .3s; }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0) scaleY(1); }
+      50% { transform: translateY(-5px) scaleY(1.08); }
+    }
+
     .organizers {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -410,19 +485,39 @@
     .person h3 { margin: 0 0 5px; font-size: 1.05rem; }
     .person p { margin: 0; color: var(--muted); font-size: .92rem; }
 
-    .tpc-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .tpc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
 
-    .tpc {
+    .tpc-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px;
       border: 1px solid var(--border);
+      border-radius: 16px;
       background: rgba(255,255,255,.04);
-      border-radius: 999px;
-      padding: 9px 16px;
-      font-size: .92rem;
-      color: var(--muted);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .tpc-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(79,140,255,.55);
+      background: rgba(79,140,255,.09);
+    }
+
+    .tpc-name { font-weight: 600; }
+
+    .linkedin {
+      font-size: .82rem;
+      font-weight: 650;
+      color: var(--accent-2);
+      white-space: nowrap;
     }
 
     footer {
@@ -454,14 +549,13 @@
     }
 
     @media (max-width: 900px) {
-      .cards, .topics { grid-template-columns: repeat(2, 1fr); }
-      .submission, .organizers { grid-template-columns: 1fr; }
-      .hero-meta { grid-template-columns: 1fr; }
+      .cards, .topics, .tpc-grid { grid-template-columns: repeat(2, 1fr); }
+      .submission, .organizers, .hero-meta { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
 
     @media (max-width: 620px) {
-      .cards, .topics { grid-template-columns: 1fr; }
+      .cards, .topics, .tpc-grid { grid-template-columns: 1fr; }
       .hero { padding: 70px 0 55px; }
       section { padding: 58px 0; }
     }
@@ -498,6 +592,25 @@
           A forum for researchers and practitioners working on the security, reliability,
           explainability, privacy, and trustworthiness of AI-enabled cybersecurity systems.
         </p>
+
+        <div class="countdown" id="countdown">
+          <div class="count-box">
+            <div class="count-value" id="days">--</div>
+            <div class="count-label">Days</div>
+          </div>
+          <div class="count-box">
+            <div class="count-value" id="hours">--</div>
+            <div class="count-label">Hours</div>
+          </div>
+          <div class="count-box">
+            <div class="count-value" id="minutes">--</div>
+            <div class="count-label">Minutes</div>
+          </div>
+          <div class="count-box">
+            <div class="count-value" id="seconds">--</div>
+            <div class="count-label">Seconds</div>
+          </div>
+        </div>
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#cfp">Submit a Paper</a>
@@ -584,8 +697,8 @@
           <div class="eyebrow">Call for Papers</div>
           <h2>Share your research and practical experience</h2>
           <p>
-            We invite original contributions presenting theoretical foundations, experimental results,
-            methodologies, architectures, practical implementations, and emerging perspectives.
+            We invite original, unpublished contributions on the security, reliability, explainability,
+            privacy, and trustworthiness of AI-enabled cybersecurity systems.
           </p>
         </div>
 
@@ -594,12 +707,12 @@
             <h3>Submission types</h3>
             <ul>
               <li>Original research papers</li>
+              <li>Short papers and work-in-progress papers</li>
+              <li>System, architecture, and implementation papers</li>
               <li>Experimental and empirical studies</li>
-              <li>System and architecture papers</li>
-              <li>Applied research and implementation studies</li>
-              <li>Industrial and practical case studies</li>
+              <li>Industrial case studies and practical deployments</li>
               <li>Position and vision papers</li>
-              <li>Datasets, benchmarks, and reproducible experiments</li>
+              <li>Datasets, benchmarks, and reproducibility papers</li>
             </ul>
           </div>
 
@@ -614,14 +727,40 @@
               <span class="tba">To be announced</span>
             </div>
             <div class="deadline">
-              <span>Workshop deadlines</span>
+              <span>Submission deadline</span>
+              <span class="tba">To be announced</span>
+            </div>
+            <div class="deadline">
+              <span>Author notification</span>
+              <span class="tba">To be announced</span>
+            </div>
+            <div class="deadline">
+              <span>Camera-ready deadline</span>
               <span class="tba">To be announced</span>
             </div>
             <p style="color:var(--muted); margin-bottom:0;">
-              Please consult the official conference website for updates.
+              Submissions must be original and must not be under review elsewhere during the review period.
+              All papers will be reviewed by the Technical Program Committee for novelty, technical quality,
+              relevance, clarity, and potential impact.
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="netherlands" id="netherlands">
+      <div class="container reveal">
+        <div class="flag">
+          <span></span><span></span><span></span>
+        </div>
+        <h2>See You in the Netherlands!</h2>
+        <p>
+          Join us in Delft from <strong>13–15 April 2027</strong> for discussions on secure,
+          trustworthy, and responsible AI for cybersecurity.
+        </p>
+        <a class="btn btn-primary" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">
+          Plan Your Participation
+        </a>
       </div>
     </section>
 
@@ -659,14 +798,41 @@
           <p>The following list reflects the current workshop proposal and remains subject to confirmation.</p>
         </div>
 
-        <div class="tpc-list reveal">
-          <span class="tpc">Rayen Gaied</span>
-          <span class="tpc">Sofien Mhatli</span>
-          <span class="tpc">Mihaela Curca</span>
-          <span class="tpc">Lorenzo Mucchi</span>
-          <span class="tpc">Alice Piemonti</span>
-          <span class="tpc">Bruno Banelli</span>
-          <span class="tpc">Marcos Altarriba Roig</span>
+        <div class="tpc-grid reveal">
+          <a class="tpc-card" href="https://www.linkedin.com/in/rayen-gaied" target="_blank" rel="noopener">
+            <span class="tpc-name">Rayen Gaied</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
+
+          <a class="tpc-card" href="https://www.linkedin.com/in/sofien-mhatli-98ba0754" target="_blank" rel="noopener">
+            <span class="tpc-name">Dr. Sofien Mhatli</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
+
+          <a class="tpc-card" href="https://www.linkedin.com/in/mihaela-curca-797671101" target="_blank" rel="noopener">
+            <span class="tpc-name">Mihaela Curca</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
+
+          <a class="tpc-card" href="https://www.linkedin.com/in/lorenzo-mucchi-7516a86" target="_blank" rel="noopener">
+            <span class="tpc-name">Lorenzo Mucchi</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
+
+          <a class="tpc-card" href="https://www.linkedin.com/in/alice-piemonti" target="_blank" rel="noopener">
+            <span class="tpc-name">Alice Piemonti</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
+
+          <a class="tpc-card" href="https://www.linkedin.com/in/brunobanelli" target="_blank" rel="noopener">
+            <span class="tpc-name">Bruno Banelli</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
+
+          <a class="tpc-card" href="https://www.linkedin.com/in/marcosaltarriba" target="_blank" rel="noopener">
+            <span class="tpc-name">Marcos Altarriba Roig</span>
+            <span class="linkedin">LinkedIn ↗</span>
+          </a>
         </div>
       </div>
     </section>
@@ -683,6 +849,7 @@
   </footer>
 
   <script>
+    // Scroll reveal animation
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -693,6 +860,33 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // Countdown to workshop start: 13 April 2027, 09:00 Amsterdam time
+    const workshopDate = new Date("2027-04-13T09:00:00+02:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = workshopDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("countdown").innerHTML =
+          '<div class="count-box" style="grid-column:1/-1"><div class="count-value">The workshop is happening!</div><div class="count-label">13–15 April 2027 · Delft, Netherlands</div></div>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
