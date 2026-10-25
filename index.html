@@ -139,6 +139,81 @@
       will-change: transform;
     }
 
+.contributor-strip {
+  width: 100%;
+  padding: 18px 0;
+  background: #fff;
+  border-top: 1px solid #e8edf3;
+  border-bottom: 1px solid #e8edf3;
+  overflow: hidden;
+}
+
+.contributor-logos {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: 16px;
+}
+
+.contributor-logo {
+  height: 76px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid #edf0f4;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contributor-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.contributor-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.08);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .contributor-logos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .contributor-logo {
+    height: 72px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .contributor-strip {
+    padding: 12px 0;
+  }
+
+  .contributor-logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .contributor-logo {
+    height: 68px;
+    padding: 6px;
+  }
+}
+
+
+    
     .bg::after {
       content: "";
       position: absolute;
@@ -1615,16 +1690,30 @@
     </section>
   </main>
 
-  <div class="contributor-strip" aria-label="Conference and contributor organizations">
-    <div class="container contributor-logos">
-      <div class="contributor-logo"><img src="Screenshot%202026-09-20%20231737.png" alt="Screenshot 2026-09-20 231737" loading="lazy"></div>
-      <div class="contributor-logo"><img src="Screenshot%202026-09-20%20231749.png" alt="Screenshot 2026-09-20 231749" loading="lazy"></div>
-      <div class="contributor-logo"><img src="Screenshot%202026-09-20%20231807.png" alt="Screenshot 2026-09-20 231807" loading="lazy"></div>
-      <div class="contributor-logo"><img src="Screenshot%202026-09-20%20231822.png" alt="Screenshot 2026-09-20 231822" loading="lazy"></div>
-      <div class="contributor-logo"><img src="Screenshot%202026-09-20%20232113.png" alt="Screenshot 2026-09-20 232113" loading="lazy"></div>
-      <div class="contributor-logo"><img src="Screenshot%202026-09-20%20232119.png" alt="Screenshot 2026-09-20 232119" loading="lazy"></div>
+ 
+<div class="contributor-strip" aria-label="Conference and contributor organizations">
+  <div class="container contributor-logos">
+    <div class="contributor-logo">
+      <img src="Screenshot%202026-09-20%20231737.png" alt="Conference contributor 1" loading="lazy">
+    </div>
+    <div class="contributor-logo">
+      <img src="Screenshot%202026-09-20%20231749.png" alt="Conference contributor 2" loading="lazy">
+    </div>
+    <div class="contributor-logo">
+      <img src="Screenshot%202026-09-20%20231807.png" alt="Conference contributor 3" loading="lazy">
+    </div>
+    <div class="contributor-logo">
+      <img src="Screenshot%202026-09-20%20231822.png" alt="Conference contributor 4" loading="lazy">
+    </div>
+    <div class="contributor-logo">
+      <img src="Screenshot%202026-09-20%20232113.png" alt="Conference contributor 5" loading="lazy">
+    </div>
+    <div class="contributor-logo">
+      <img src="Screenshot%202026-09-20%20232119.png" alt="Conference contributor 6" loading="lazy">
     </div>
   </div>
+</div>
+
 
   <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="m6 14 6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
