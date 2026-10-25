@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TrustSecAI 2027: 1st International Workshop on AI Security &amp; Trustworthy Autonomous Cybersecurity</title>
+  <title>AI Security and Trustworthy Autonomous Cybersecurity | ANT & EDI 2027</title>
   <meta name="description" content="Workshop on AI Security and Trustworthy Autonomous Cybersecurity at ANT & EDI 2027, Delft, Netherlands, 13–15 April 2027.">
   <meta name="theme-color" content="#070b16">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="TrustSecAI 2027: 1st International Workshop on AI Security &amp; Trustworthy Autonomous Cybersecurity">
+  <meta property="og:title" content="AI Security and Trustworthy Autonomous Cybersecurity | ANT &amp; EDI 2027">
   <meta property="og:description" content="Workshop on AI security, trustworthy AI, and autonomous cybersecurity at ANT &amp; EDI 2027 in Delft, Netherlands, 13–15 April 2027.">
   <meta property="og:url" content="https://rayentech.github.io/WorkshopProposal-ant-edi-2027.github.io-/">
   <link rel="canonical" href="https://rayentech.github.io/WorkshopProposal-ant-edi-2027.github.io-/">
@@ -139,10 +139,6 @@
       will-change: transform;
     }
 
-
-
-
-    
     .bg::after {
       content: "";
       position: absolute;
@@ -857,7 +853,7 @@
 
     .tpc-card {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
       gap: 12px;
       padding: 18px;
@@ -875,15 +871,7 @@
       background: rgba(79,140,255,.09);
     }
 
-    .tpc-card > div:first-child { min-width: 0; }
-
-    .tpc-name {
-      display: block;
-      white-space: nowrap;
-      font-size: clamp(.78rem, 1.05vw, 1rem);
-      font-weight: 700;
-      letter-spacing: -.015em;
-    }
+    .tpc-name { font-weight: 600; }
 
     .tpc-affiliation {
       margin: 7px 0 0;
@@ -908,50 +896,10 @@
     }
 
     .linkedin {
-      margin-top: 3px;
       font-size: .82rem;
       font-weight: 650;
       color: var(--accent-2);
       white-space: nowrap;
-    }
-
-    .contributor-strip {
-      position: relative;
-      z-index: 1;
-      padding: 10px 0;
-      border-top: 1px solid rgba(255,255,255,.07);
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      background: rgba(255,255,255,.018);
-    }
-
-    .contributor-logos {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      align-items: center;
-      gap: 7px;
-    }
-
-    .contributor-logo {
-      display: grid;
-      place-items: center;
-      min-height: 28px;
-      padding: 0;
-    }
-
-    .contributor-logo img {
-      display: block;
-      width: auto;
-      max-width: 100%;
-      max-height: 24px;
-      object-fit: contain;
-      filter: grayscale(12%);
-      opacity: .78;
-      transition: filter .2s ease, opacity .2s ease;
-    }
-
-    .contributor-logo:hover img {
-      filter: grayscale(0);
-      opacity: 1;
     }
 
     footer {
@@ -1120,18 +1068,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 900px) {
-      .contributor-logos {
-        display: flex;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 6px;
-      }
-      .contributor-logo {
-        flex: 0 0 82px;
-      }
-    }
-
     @media (max-width: 620px) {
       .hero-visual { padding: 14px 0 20px; }
       .visual-panel { padding: 14px; border-radius: 19px; }
@@ -1162,66 +1098,44 @@
       .brand-mark svg { width: 26px; height: 26px; }
     }
 
+    /* Compact, professional conference/community image gallery */
+    .conference-gallery {
+      padding: 46px 0 50px;
+      background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(79,140,255,.035));
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .conference-gallery .gallery-container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .conference-gallery .gallery-heading { max-width: 760px; margin: 0 auto 26px; text-align: center; }
+    .conference-gallery .gallery-eyebrow { display: inline-block; margin-bottom: 9px; color: var(--cyan, #62d9f5); font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .conference-gallery .gallery-heading h2 { margin: 0 0 10px; font-size: clamp(1.55rem, 3vw, 2.1rem); line-height: 1.2; }
+    .conference-gallery .gallery-heading p { max-width: 650px; margin: 0 auto; color: var(--muted, #aebbd0); font-size: .9rem; line-height: 1.7; }
+    .conference-gallery .gallery-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 13px; }
+    .conference-gallery .gallery-item { min-width: 0; margin: 0; padding: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.11); border-radius: 13px; background: rgba(255,255,255,.045); transition: transform .22s ease, border-color .22s ease, background .22s ease; }
+    .conference-gallery .gallery-item:hover { transform: translateY(-3px); border-color: rgba(98,217,245,.55); background: rgba(255,255,255,.075); }
+    .conference-gallery .gallery-item a { display: flex; align-items: center; justify-content: center; min-height: 92px; overflow: hidden; border-radius: 7px; background: rgba(255,255,255,.035); }
+    .conference-gallery .gallery-item img { display: block; width: 100%; height: 92px; margin: 0; object-fit: contain; object-position: center; transition: transform .25s ease; }
+    .conference-gallery .gallery-item:hover img { transform: scale(1.035); }
+    .conference-gallery .gallery-item figcaption { padding: 9px 2px 1px; color: var(--text, #f3f6fc); font-size: .74rem; font-weight: 650; line-height: 1.4; text-align: center; }
+    .conference-gallery .gallery-footer { margin-top: 23px; padding: 18px 20px; text-align: center; border: 1px solid rgba(255,255,255,.09); border-radius: 13px; background: rgba(255,255,255,.025); }
+    .conference-gallery .gallery-footer p { margin: 0 0 8px; color: var(--muted, #aebbd0); font-size: .84rem; line-height: 1.65; }
+    .conference-gallery .gallery-link { color: var(--cyan, #62d9f5); font-size: .86rem; font-weight: 750; text-decoration: none; }
+    .conference-gallery .gallery-link:hover { text-decoration: underline; }
+    @media (max-width: 1050px) { .conference-gallery .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; } }
+    @media (max-width: 560px) {
+      .conference-gallery { padding: 34px 0 38px; }
+      .conference-gallery .gallery-container { width: min(100% - 28px, 1180px); }
+      .conference-gallery .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .conference-gallery .gallery-item { padding: 8px; border-radius: 11px; }
+      .conference-gallery .gallery-item a, .conference-gallery .gallery-item img { height: 76px; min-height: 76px; }
+      .conference-gallery .gallery-item figcaption { font-size: .7rem; }
+      .conference-gallery .gallery-footer { margin-top: 17px; padding: 16px 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .conference-gallery .gallery-item, .conference-gallery .gallery-item img { transition: none; }
+      .conference-gallery .gallery-item:hover, .conference-gallery .gallery-item:hover img { transform: none; }
+    }
 
-/* Small, borderless conference and contributor logo strip */
-.conference-partners {
-  padding: 24px 0 !important;
-  border-top: 1px solid rgba(255,255,255,.07);
-  border-bottom: 1px solid rgba(255,255,255,.07);
-  background: rgba(255,255,255,.015);
-}
-
-.conference-partners-grid {
-  display: flex !important;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 34px;
-  min-height: 240px;
-  overflow-x: auto;
-  padding: 8px 0;
-}
-
-.conference-partners-grid img {
-  display: block !important;
-  flex: 0 0 auto;
-  width: auto !important;
-  max-width: none;
-  height: 240px !important;
-  max-height: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  opacity: .78;
-  filter: grayscale(12%);
-  transition: opacity .2s ease, filter .2s ease;
-}
-
-.conference-partners-grid img:hover {
-  opacity: 1;
-  filter: grayscale(0);
-}
-
-@media (max-width: 768px) {
-  .conference-partners-grid {
-    justify-content: flex-start;
-    overflow-x: auto;
-    gap: 26px;
-    padding-bottom: 6px;
-  }
-
-  .conference-partners-grid img {
-    flex: 0 0 auto;
-    max-width: none;
-    height: 180px !important;
-    max-height: none !important;
-  }
-}
-    
-</style>
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1282,8 +1196,8 @@
         </span>
         <span class="brand-copy">
           <span class="brand-title">
-            <span>TrustSecAI 2027</span>
-            <span>AI Security &amp; Trustworthy Autonomous Cybersecurity</span>
+            <span>AI Security &amp; Trustworthy</span>
+            <span>Autonomous Cybersecurity</span>
           </span>
           <span class="brand-subtitle">ANT &amp; EDI 2027 · Workshop</span>
         </span>
@@ -1501,16 +1415,16 @@
               <span class="tba">To be announced</span>
             </div>
             <div class="deadline">
-              <span class="deadline-label">Submission deadline</span>
-              <span class="tba">November 27th, 2026</span>
+              <span class="deadline-label">Paper submission deadline</span>
+              <span class="tba">27 November 2026</span>
             </div>
             <div class="deadline">
-              <span class="deadline-label">Notification</span>
-              <span class="tba">January 10th, 2027</span>
+              <span class="deadline-label">Acceptance notification</span>
+              <span class="tba">7 January 2027</span>
             </div>
             <div class="deadline">
-              <span class="deadline-label">Final date for camera-ready</span>
-              <span class="tba">January 20th, 2027</span>
+              <span class="deadline-label">Final manuscript due</span>
+              <span class="tba">1 February 2027</span>
             </div>
             <p style="color:var(--muted); margin-bottom:0;">
               Submissions must be original and must not be under review elsewhere during the review period.
@@ -1558,6 +1472,29 @@
         <a class="btn btn-primary" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">
           Plan Your Participation
         </a>
+      </div>
+    </section>
+
+
+    <section class="conference-gallery" id="conference-gallery">
+      <div class="gallery-container">
+        <div class="gallery-heading reveal">
+          <div class="gallery-eyebrow">ANT &amp; EDI 2027 · Delft, the Netherlands</div>
+          <h2>Conference &amp; Community</h2>
+          <p>Research, innovation, and the international community shaping ambient systems, networks, trustworthy AI, and cybersecurity.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal"><a href="Screenshot%202026-09-20%20231737.png" target="_blank" rel="noopener noreferrer"><img src="Screenshot%202026-09-20%20231737.png" alt="Conference and community image 1" loading="lazy"></a></figure>
+          <figure class="gallery-item reveal"><a href="Screenshot%202026-09-20%20231749.png" target="_blank" rel="noopener noreferrer"><img src="Screenshot%202026-09-20%20231749.png" alt="Conference and community image 2" loading="lazy"></a></figure>
+          <figure class="gallery-item reveal"><a href="Screenshot%202026-09-20%20231807.png" target="_blank" rel="noopener noreferrer"><img src="Screenshot%202026-09-20%20231807.png" alt="Conference and community image 3" loading="lazy"></a></figure>
+          <figure class="gallery-item reveal"><a href="Screenshot%202026-09-20%20231822.png" target="_blank" rel="noopener noreferrer"><img src="Screenshot%202026-09-20%20231822.png" alt="Conference and community image 4" loading="lazy"></a></figure>
+          <figure class="gallery-item reveal"><a href="Screenshot%202026-09-20%20232113.png" target="_blank" rel="noopener noreferrer"><img src="Screenshot%202026-09-20%20232113.png" alt="Conference and community image 5" loading="lazy"></a></figure>
+          <figure class="gallery-item reveal"><a href="Screenshot%202026-09-20%20232119.png" target="_blank" rel="noopener noreferrer"><img src="Screenshot%202026-09-20%20232119.png" alt="Conference and community image 6" loading="lazy"></a></figure>
+        </div>
+        <div class="gallery-footer reveal">
+          <p>In conjunction with the <strong>18th International Conference on Ambient Systems, Networks and Technologies</strong><br>April 13–15, 2027 · Delft, the Netherlands</p>
+          <a class="gallery-link" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener noreferrer">Visit the ANT 2027 conference website ↗</a>
+        </div>
       </div>
     </section>
 
@@ -1679,7 +1616,6 @@
     </section>
   </main>
 
-   
   <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="m6 14 6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
@@ -1692,6 +1628,7 @@
       </span>
       <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause decorative background motion">
         <span class="motion-indicator" aria-hidden="true"></span>
+        <span id="motion-toggle-label">Pause background motion</span>
       </button>
     </div>
   </footer>
