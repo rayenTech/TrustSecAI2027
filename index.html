@@ -662,6 +662,11 @@
     }
 
     .deadline:last-child { border-bottom: 0; }
+    .deadline .deadline-label { color: var(--text); font-weight: 600; }
+    .deadline .tba { text-align: right; white-space: normal; }
+    .deadline .tba.is-extended { color: #9ff3e7; background: rgba(0,212,184,.10); border-color: rgba(0,212,184,.32); }
+    .contact-action { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--accent, #66d9ef); font-weight: 650; text-decoration: none; overflow-wrap: anywhere; }
+    .contact-action:hover { text-decoration: underline; text-underline-offset: 4px; }
 
     .tba {
       padding: 6px 12px;
@@ -672,6 +677,18 @@
       font-size: .82rem;
       font-weight: 650;
     }
+
+
+    .publication-panel { max-width: 920px; margin: 0 auto; color: var(--muted); line-height: 1.8; }
+    .publication-panel h3 { color: var(--text); margin-top: 24px; }
+    .publication-panel a { color: var(--accent, #66d9ef); text-decoration: underline; text-underline-offset: 3px; }
+    .publication-note { padding: 14px 16px; border-left: 3px solid rgba(0,212,184,.65); background: rgba(0,212,184,.06); border-radius: 0 10px 10px 0; font-size: .92rem; }
+    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 920px; margin: 0 auto; }
+    .contact-card { border: 1px solid var(--border); background: var(--card); border-radius: var(--radius); padding: 26px; }
+    .contact-card h3 { margin: 10px 0 8px; }
+    .contact-card p { color: var(--muted); }
+    .contact-label { color: #72e5d2; font-size: .78rem; font-weight: 750; text-transform: uppercase; letter-spacing: .09em; }
+    .contact-email-pending { margin-bottom: 0; font-size: .9rem; font-style: italic; }
 
     .netherlands {
       position: relative;
@@ -990,6 +1007,7 @@
       .hero-visual { width: min(100%, 610px); margin: 0 auto; }
       .cards, .topics, .tpc-grid { grid-template-columns: repeat(2, 1fr); }
       .submission, .organizers, .hero-meta { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
       .nav { position: relative; padding: 12px 0; }
       .menu-toggle { display: flex; }
       .nav-links {
@@ -1121,6 +1139,7 @@
         <a href="#topics">Topics</a>
         <a href="#cfp">Call for Papers</a>
         <a href="#organizers">Organizers</a>
+        <a href="contacts.html">Contacts</a>
         <a class="cta" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">Conference ↗</a>
       </nav>
     </div>
@@ -1320,16 +1339,16 @@
               <span class="tba">To be announced</span>
             </div>
             <div class="deadline">
-              <span>Submission deadline</span>
-              <span class="tba">To be announced</span>
+              <span class="deadline-label">Paper submission deadline</span>
+              <span class="tba is-extended">16 November 2026 · Extended</span>
             </div>
             <div class="deadline">
-              <span>Author notification</span>
-              <span class="tba">To be announced</span>
+              <span class="deadline-label">Acceptance notification</span>
+              <span class="tba">7 January 2027</span>
             </div>
             <div class="deadline">
-              <span>Camera-ready deadline</span>
-              <span class="tba">To be announced</span>
+              <span class="deadline-label">Final manuscript due</span>
+              <span class="tba">1 February 2027</span>
             </div>
             <p style="color:var(--muted); margin-bottom:0;">
               Submissions must be original and must not be under review elsewhere during the review period.
@@ -1340,6 +1359,29 @@
         </div>
       </div>
     </section>
+
+    <section id="publication">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Publication &amp; Indexing</div>
+          <h2>Publication of accepted papers</h2>
+          <p>Disseminating workshop research through the ANT conference proceedings.</p>
+        </div>
+        <div class="panel reveal publication-panel">
+          <p>All accepted and registered papers will be included in the proceedings of the
+            <a href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">18th International Conference on Ambient Systems, Networks and Technologies (ANT)</a>,
+            published by Elsevier in the open-access <em>Procedia Computer Science</em> series, subject to the conference's official publication requirements.</p>
+          <p><em>Procedia Computer Science</em> is published by Elsevier and hosted on <a href="https://www.sciencedirect.com/journal/procedia-computer-science" target="_blank" rel="noopener">ScienceDirect</a>. The series provides open-access publication intended to make articles freely available to readers worldwide, subject to the applicable publication terms.</p>
+          <h3>Indexing and discoverability</h3>
+          <p>Conference and series materials describe discoverability through services including
+            <a href="https://www.scopus.com/" target="_blank" rel="noopener">Scopus</a>,
+            <a href="https://www.engineeringvillage.com/" target="_blank" rel="noopener">Engineering Village / Ei Compendex</a> (<a href="https://www.ei.org/compendex" target="_blank" rel="noopener">Compendex</a>),
+            and <a href="https://dblp.org/" target="_blank" rel="noopener">DBLP</a>. The conference information also references the <a href="https://clarivate.com/" target="_blank" rel="noopener">Conference Proceedings Citation Index</a>. Articles in the proceedings are expected to include citable DOI identifiers and linked references where provided by the publisher.</p>
+          <p class="publication-note"><strong>Important:</strong> Publication in the proceedings, open-access availability, indexing by individual databases, and DOI assignment are subject to the official ANT 2027 arrangements, publisher policies, and each indexing service's coverage decisions. These details should not be interpreted as a guarantee that every paper will be indexed in every database. Please consult the <a href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">official ANT 2027 website</a> and publisher information for authoritative updates.</p>
+        </div>
+      </div>
+    </section>
+
 
     <section class="netherlands" id="netherlands">
       <div class="container reveal">
