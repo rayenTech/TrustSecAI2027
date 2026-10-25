@@ -459,15 +459,62 @@
       gap: 18px;
     }
 
-    .person {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      border: 1px solid var(--border);
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 22px;
-    }
+    .organizers {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.person {
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.person-photo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(79,140,255,.45);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  margin-bottom: 16px;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.person:hover .person-photo {
+  transform: scale(1.05);
+  border-color: var(--accent-2);
+}
+
+.person-link {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--accent-2);
+  font-size: .84rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.person-link:hover {
+  background: rgba(0,212,184,.12);
+  border-color: rgba(0,212,184,.45);
+}
+
+@media (max-width: 900px) {
+  .organizers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .organizers {
+    grid-template-columns: 1fr;
+  }
+}
 
     .avatar {
       width: 62px;
@@ -765,30 +812,67 @@
     </section>
 
     <section id="organizers">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="eyebrow">Organizers</div>
-          <h2>Workshop organizers</h2>
-        </div>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Organizers</div>
+      <h2>Workshop organizers</h2>
+      <p>Meet the co-chairs of the AI Security and Trustworthy Autonomous Cybersecurity workshop.</p>
+    </div>
 
-        <div class="organizers">
-          <div class="person reveal">
-            <div class="avatar">RG</div>
-            <div>
-              <h3>Rayen Gaied</h3>
-              <p>SERCOM Laboratory, Tunisia Polytechnic School, University of Carthage, Tunisia</p>
-            </div>
-          </div>
-          <div class="person reveal">
-            <div class="avatar">SM</div>
-            <div>
-              <h3>Dr. Sofien Mhatli</h3>
-              <p>SERCOM Laboratory, Tunisia Polytechnic School, University of Carthage, Tunisia</p>
-            </div>
-          </div>
+    <div class="organizers">
+      <div class="person reveal">
+        <img
+          class="person-photo"
+          src="images/Gaied_Rayen.jpg"
+          alt="Rayen Gaied"
+          loading="lazy"
+        >
+        <div>
+          <h3>Rayen Gaied</h3>
+          <p>Workshop Co-Chair</p>
+          <p>SERCOM Laboratory, Tunisia Polytechnic School, University of Carthage, Tunisia</p>
+          <a class="person-link" href="https://www.linkedin.com/in/rayen-gaied" target="_blank" rel="noopener">
+            LinkedIn ↗
+          </a>
         </div>
       </div>
-    </section>
+
+      <div class="person reveal">
+        <img
+          class="person-photo"
+          src="images/sofien.jpg"
+          alt="Dr. Sofien Mhatli"
+          loading="lazy"
+        >
+        <div>
+          <h3>Dr. Sofien Mhatli</h3>
+          <p>Workshop Co-Chair</p>
+          <p>SERCOM Laboratory, Tunisia Polytechnic School, University of Carthage, Tunisia</p>
+          <a class="person-link" href="https://www.linkedin.com/in/sofien-mhatli-98ba0754" target="_blank" rel="noopener">
+            LinkedIn ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="person reveal">
+        <img
+          class="person-photo"
+          src="images/mihaela-curca.jpg"
+          alt="Mihaela Curca"
+          loading="lazy"
+        >
+        <div>
+          <h3>Mihaela Curca</h3>
+          <p>Workshop Co-Chair</p>
+          <p>Cybersecurity Project Manager and Researcher</p>
+          <a class="person-link" href="https://www.linkedin.com/in/mihaela-curca-797671101" target="_blank" rel="noopener">
+            LinkedIn ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="tpc">
       <div class="container">
