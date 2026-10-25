@@ -1,1 +1,698 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Security and Trustworthy Autonomous Cybersecurity | ANT & EDI 2027</title>
+  <meta name="description" content="Workshop on AI Security and Trustworthy Autonomous Cybersecurity at ANT & EDI 2027, Delft, Netherlands, 13–15 April 2027.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070b16;
+      --bg-soft: #0c1224;
+      --card: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #e8edf7;
+      --muted: #a7b0c3;
+      --accent: #4f8cff;
+      --accent-2: #00d4b8;
+      --accent-3: #a06bff;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(79,140,255,.22), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(0,212,184,.16), transparent 30%),
+        radial-gradient(circle at 68% 82%, rgba(160,107,255,.18), transparent 34%),
+        var(--bg);
+    }
+
+    .grid {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(circle at 50% 25%, black, transparent 78%);
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(7,11,22,.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #04101f;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 500;
+      padding: 9px 13px;
+      border-radius: 999px;
+      transition: .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+      background: rgba(255,255,255,.08);
+    }
+
+    .cta {
+      color: #04101f !important;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)) !important;
+      font-weight: 700 !important;
+    }
+
+    .hero {
+      padding: 96px 0 72px;
+      position: relative;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 500;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      box-shadow: 0 0 0 5px rgba(0,212,184,.14);
+    }
+
+    h1 {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.3rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      margin: 24px 0 18px;
+      max-width: 900px;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, #ffffff 10%, var(--accent) 42%, var(--accent-2) 70%, var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p.lead {
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      max-width: 730px;
+      margin: 0 0 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 650;
+      font-size: .97rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn-primary {
+      color: #04101f;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 34px rgba(79,140,255,.25);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 830px;
+    }
+
+    .meta-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .meta-value {
+      font-weight: 650;
+      margin-top: 6px;
+    }
+
+    section {
+      padding: 74px 0;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: -.035em;
+      margin: 12px 0 14px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79,140,255,.5);
+      background: rgba(79,140,255,.08);
+    }
+
+    .card h3 {
+      margin: 14px 0 8px;
+      font-size: 1.08rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .95rem;
+    }
+
+    .icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(79,140,255,.13);
+      border: 1px solid rgba(79,140,255,.25);
+      font-size: 1.2rem;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .topic {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 15px 17px;
+      color: var(--text);
+      font-size: .95rem;
+      transition: .2s ease;
+    }
+
+    .topic:hover {
+      border-color: rgba(0,212,184,.5);
+      background: rgba(0,212,184,.08);
+      transform: translateY(-2px);
+    }
+
+    .submission {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 22px;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .panel h3 { margin-top: 0; }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .panel li { margin: 8px 0; }
+
+    .deadline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .deadline:last-child { border-bottom: 0; }
+
+    .tba {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(160,107,255,.13);
+      border: 1px solid rgba(160,107,255,.3);
+      color: #d7c6ff;
+      font-size: .82rem;
+      font-weight: 650;
+    }
+
+    .organizers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .person {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .avatar {
+      width: 62px;
+      height: 62px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: "Sora", sans-serif;
+      font-weight: 800;
+      color: #04101f;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .person h3 { margin: 0 0 5px; font-size: 1.05rem; }
+    .person p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .tpc-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tpc {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 34px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer a { color: var(--text); text-decoration: none; }
+    footer a:hover { color: var(--accent-2); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 900px) {
+      .cards, .topics { grid-template-columns: repeat(2, 1fr); }
+      .submission, .organizers { grid-template-columns: 1fr; }
+      .hero-meta { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      .cards, .topics { grid-template-columns: 1fr; }
+      .hero { padding: 70px 0 55px; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grid"></div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AI</span>
+        <span>AI Security &amp; Trustworthy<br>Autonomous Cybersecurity</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#topics">Topics</a>
+        <a href="#cfp">Call for Papers</a>
+        <a href="#organizers">Organizers</a>
+        <a class="cta" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">Conference</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <span class="pill"><span class="dot"></span> Workshop at ANT &amp; EDI 2027</span>
+
+        <h1>Securing AI. <span class="gradient">Trusting Autonomous Cyber Defense.</span></h1>
+
+        <p class="lead">
+          A forum for researchers and practitioners working on the security, reliability,
+          explainability, privacy, and trustworthiness of AI-enabled cybersecurity systems.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cfp">Submit a Paper</a>
+          <a class="btn btn-secondary" href="#topics">Explore Topics</a>
+          <a class="btn btn-secondary" href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">Official Conference Site</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-card">
+            <div class="meta-label">Conference</div>
+            <div class="meta-value">ANT &amp; EDI 2027</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Location</div>
+            <div class="meta-value">Delft, Netherlands</div>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Dates</div>
+            <div class="meta-value">13–15 April 2027</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">About the Workshop</div>
+          <h2>AI is transforming cybersecurity—and creating new risks</h2>
+          <p>
+            Artificial intelligence is reshaping threat detection, security operations, and autonomous
+            cyber defense. At the same time, it introduces challenges related to adversarial manipulation,
+            model vulnerabilities, privacy, reliability, and human trust.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card reveal">
+            <div class="icon">🛡️</div>
+            <h3>Security of AI Systems</h3>
+            <p>Explore attacks, defenses, robustness, and evaluation methods for LLMs, generative AI, and AI-enabled systems.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🤖</div>
+            <h3>Autonomous Cyber Defense</h3>
+            <p>Discuss agentic cybersecurity, AI-assisted SOCs, automated response, orchestration, and responsible autonomy.</p>
+          </div>
+          <div class="card reveal">
+            <div class="icon">🔍</div>
+            <h3>Trustworthy AI</h3>
+            <p>Advance explainability, privacy preservation, reliability, risk management, and human oversight in security applications.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Topics of Interest</div>
+          <h2>What we welcome</h2>
+          <p>Contributions may address, but are not limited to, the following areas.</p>
+        </div>
+
+        <div class="topics">
+          <div class="topic reveal">Security of LLMs and generative AI</div>
+          <div class="topic reveal">Prompt injection and attacks on AI-enabled systems</div>
+          <div class="topic reveal">Adversarial machine learning and robust AI</div>
+          <div class="topic reveal">AI-assisted and autonomous Security Operations Centers</div>
+          <div class="topic reveal">AI-driven threat detection, analysis, and incident response</div>
+          <div class="topic reveal">Explainable, trustworthy, and privacy-preserving AI</div>
+          <div class="topic reveal">Autonomous cyber defense and agentic cybersecurity systems</div>
+          <div class="topic reveal">AI security for 5G/6G networks and intelligent infrastructures</div>
+          <div class="topic reveal">Secure orchestration and automation of cybersecurity operations</div>
+          <div class="topic reveal">Human oversight, risk management, and responsible autonomy</div>
+          <div class="topic reveal">Security evaluation, datasets, benchmarks, and reproducible experiments</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cfp">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Call for Papers</div>
+          <h2>Share your research and practical experience</h2>
+          <p>
+            We invite original contributions presenting theoretical foundations, experimental results,
+            methodologies, architectures, practical implementations, and emerging perspectives.
+          </p>
+        </div>
+
+        <div class="submission">
+          <div class="panel reveal">
+            <h3>Submission types</h3>
+            <ul>
+              <li>Original research papers</li>
+              <li>Experimental and empirical studies</li>
+              <li>System and architecture papers</li>
+              <li>Applied research and implementation studies</li>
+              <li>Industrial and practical case studies</li>
+              <li>Position and vision papers</li>
+              <li>Datasets, benchmarks, and reproducible experiments</li>
+            </ul>
+          </div>
+
+          <div class="panel reveal">
+            <h3>Submission information</h3>
+            <div class="deadline">
+              <span>Paper length</span>
+              <span class="tba">Up to 6 pages</span>
+            </div>
+            <div class="deadline">
+              <span>Submission platform</span>
+              <span class="tba">To be announced</span>
+            </div>
+            <div class="deadline">
+              <span>Workshop deadlines</span>
+              <span class="tba">To be announced</span>
+            </div>
+            <p style="color:var(--muted); margin-bottom:0;">
+              Please consult the official conference website for updates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Organizers</div>
+          <h2>Workshop organizers</h2>
+        </div>
+
+        <div class="organizers">
+          <div class="person reveal">
+            <div class="avatar">RG</div>
+            <div>
+              <h3>Rayen Gaied</h3>
+              <p>SERCOM Laboratory, Tunisia Polytechnic School, University of Carthage, Tunisia</p>
+            </div>
+          </div>
+          <div class="person reveal">
+            <div class="avatar">SM</div>
+            <div>
+              <h3>Dr. Sofien Mhatli</h3>
+              <p>SERCOM Laboratory, Tunisia Polytechnic School, University of Carthage, Tunisia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tpc">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Technical Program Committee</div>
+          <h2>Tentative TPC</h2>
+          <p>The following list reflects the current workshop proposal and remains subject to confirmation.</p>
+        </div>
+
+        <div class="tpc-list reveal">
+          <span class="tpc">Rayen Gaied</span>
+          <span class="tpc">Sofien Mhatli</span>
+          <span class="tpc">Mihaela Curca</span>
+          <span class="tpc">Lorenzo Mucchi</span>
+          <span class="tpc">Alice Piemonti</span>
+          <span class="tpc">Bruno Banelli</span>
+          <span class="tpc">Marcos Altarriba Roig</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2027 AI Security and Trustworthy Autonomous Cybersecurity Workshop.</span>
+      <span>
+        <a href="https://cs-conferences.acadiau.ca/ant-27/" target="_blank" rel="noopener">ANT &amp; EDI 2027</a> ·
+        Delft, Netherlands · 13–15 April 2027
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
