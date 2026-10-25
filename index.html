@@ -1225,6 +1225,54 @@
       .brand-mark { width: 36px; height: 36px; flex-basis: 36px; }
       .brand-mark svg { width: 26px; height: 26px; }
     }
+
+
+/* Conference contributor gallery */
+.conference-partners {
+  padding: 35px 0 !important;
+  background: #ffffff;
+}
+
+.conference-partners-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px !important;
+  align-items: center;
+}
+
+.conference-partners-grid img {
+  display: block !important;
+  width: 100% !important;
+  height: 220px !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .conference-partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
+
+  .conference-partners-grid img {
+    height: 180px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .conference-partners-grid img {
+    height: 150px !important;
+  }
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -1684,28 +1732,20 @@
   </main>
 
  
-<div class="contributor-strip" aria-label="Conference and contributor organizations">
-  <div class="container contributor-logos">
-    <div class="contributor-logo">
+
+<section class="conference-partners" aria-label="Conference partners and contributors">
+  <div class="container">
+    <div class="conference-partners-grid">
       <img src="Screenshot%202026-09-20%20231737.png" alt="Conference contributor 1" loading="lazy">
-    </div>
-    <div class="contributor-logo">
       <img src="Screenshot%202026-09-20%20231749.png" alt="Conference contributor 2" loading="lazy">
-    </div>
-    <div class="contributor-logo">
       <img src="Screenshot%202026-09-20%20231807.png" alt="Conference contributor 3" loading="lazy">
-    </div>
-    <div class="contributor-logo">
       <img src="Screenshot%202026-09-20%20231822.png" alt="Conference contributor 4" loading="lazy">
-    </div>
-    <div class="contributor-logo">
       <img src="Screenshot%202026-09-20%20232113.png" alt="Conference contributor 5" loading="lazy">
-    </div>
-    <div class="contributor-logo">
       <img src="Screenshot%202026-09-20%20232119.png" alt="Conference contributor 6" loading="lazy">
     </div>
   </div>
-</div>
+</section>
+
 
 
   <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
