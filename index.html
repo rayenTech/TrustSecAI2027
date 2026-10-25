@@ -1174,18 +1174,20 @@
 .conference-partners-grid {
   display: flex !important;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  min-height: 30px;
+  justify-content: flex-start;
+  gap: 34px;
+  min-height: 240px;
+  overflow-x: auto;
+  padding: 8px 0;
 }
 
 .conference-partners-grid img {
   display: block !important;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   width: auto !important;
-  max-width: 16%;
-  height: auto !important;
-  max-height: 120px !important;
+  max-width: none;
+  height: 240px !important;
+  max-height: none !important;
   margin: 0 !important;
   padding: 0 !important;
   object-fit: contain !important;
@@ -1207,14 +1209,15 @@
   .conference-partners-grid {
     justify-content: flex-start;
     overflow-x: auto;
-    gap: 22px;
-    padding-bottom: 4px;
+    gap: 26px;
+    padding-bottom: 6px;
   }
 
   .conference-partners-grid img {
     flex: 0 0 auto;
-    max-width: 92px;
-    max-height: 90px !important;
+    max-width: none;
+    height: 180px !important;
+    max-height: none !important;
   }
 }
 
