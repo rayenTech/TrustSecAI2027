@@ -853,7 +853,7 @@
 
     .tpc-card {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 12px;
       padding: 18px;
@@ -871,7 +871,15 @@
       background: rgba(79,140,255,.09);
     }
 
-    .tpc-name { font-weight: 600; }
+    .tpc-card > div:first-child { min-width: 0; }
+
+    .tpc-name {
+      display: block;
+      white-space: nowrap;
+      font-size: clamp(.78rem, 1.05vw, 1rem);
+      font-weight: 700;
+      letter-spacing: -.015em;
+    }
 
     .tpc-affiliation {
       margin: 7px 0 0;
@@ -896,6 +904,7 @@
     }
 
     .linkedin {
+      margin-top: 3px;
       font-size: .82rem;
       font-weight: 650;
       color: var(--accent-2);
