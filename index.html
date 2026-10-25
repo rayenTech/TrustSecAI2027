@@ -1163,53 +1163,62 @@
     }
 
 
-/* Conference contributor gallery */
+/* Small, borderless conference and contributor logo strip */
 .conference-partners {
-  padding: 35px 0 !important;
-  background: #ffffff;
+  padding: 14px 0 !important;
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.015);
 }
 
 .conference-partners-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 28px !important;
+  display: flex !important;
   align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 30px;
 }
 
 .conference-partners-grid img {
   display: block !important;
-  width: 100% !important;
-  height: 220px !important;
-  max-width: none !important;
+  flex: 0 1 auto;
+  width: auto !important;
+  max-width: 15%;
+  height: auto !important;
+  max-height: 28px !important;
   margin: 0 !important;
   padding: 0 !important;
   object-fit: contain !important;
   object-position: center !important;
-  border: none !important;
+  border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+  opacity: .78;
+  filter: grayscale(12%);
+  transition: opacity .2s ease, filter .2s ease;
+}
+
+.conference-partners-grid img:hover {
+  opacity: 1;
+  filter: grayscale(0);
 }
 
 @media (max-width: 768px) {
   .conference-partners-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 20px !important;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 22px;
+    padding-bottom: 4px;
   }
 
   .conference-partners-grid img {
-    height: 180px !important;
+    flex: 0 0 auto;
+    max-width: 92px;
+    max-height: 24px !important;
   }
 }
 
-@media (max-width: 480px) {
-  .conference-partners-grid img {
-    height: 150px !important;
-  }
-}
-
-
-    
-  </style>
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1670,12 +1679,12 @@
    <section class="conference-partners" aria-label="Conference partners and contributors">
        <div class="container">
          <div class="conference-partners-grid">
-           <img src="Screenshot%202026-09-20%20231737.png" alt="Conference contributor 1" loading="lazy">
-           <img src="Screenshot%202026-09-20%20231749.png" alt="Conference contributor 2" loading="lazy">
-           <img src="Screenshot%202026-09-20%20231807.png" alt="Conference contributor 3" loading="lazy">
-           <img src="Screenshot%202026-09-20%20231822.png" alt="Conference contributor 4" loading="lazy">
-           <img src="Screenshot%202026-09-20%20232113.png" alt="Conference contributor 5" loading="lazy">
-           <img src="Screenshot%202026-09-20%20232119.png" alt="Conference contributor 6" loading="lazy">
+           <img src="./Screenshot 2026-09-20 231737.png" alt="Conference contributor 1" loading="lazy">
+           <img src="./Screenshot 2026-09-20 231749.png" alt="Conference contributor 2" loading="lazy">
+           <img src="./Screenshot 2026-09-20 231807.png" alt="Conference contributor 3" loading="lazy">
+           <img src="./Screenshot 2026-09-20 231822.png" alt="Conference contributor 4" loading="lazy">
+           <img src="./Screenshot 2026-09-20 232113.png" alt="Conference contributor 5" loading="lazy">
+           <img src="./Screenshot 2026-09-20 232119.png" alt="Conference contributor 6" loading="lazy">
        </div>
          </div>
    </section>
