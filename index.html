@@ -914,7 +914,7 @@
     .contributor-strip {
       position: relative;
       z-index: 1;
-      padding: 18px 0;
+      padding: 10px 0;
       border-top: 1px solid rgba(255,255,255,.07);
       border-bottom: 1px solid rgba(255,255,255,.07);
       background: rgba(255,255,255,.018);
@@ -924,16 +924,16 @@
       display: grid;
       grid-template-columns: repeat(6, minmax(0, 1fr));
       align-items: center;
-      gap: 10px;
+      gap: 7px;
     }
 
     .contributor-logo {
       display: grid;
       place-items: center;
-      height: 52px;
-      padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 14px;
+      height: 34px;
+      padding: 4px 7px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px;
       background: rgba(255,255,255,.035);
       transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
@@ -947,7 +947,7 @@
     .contributor-logo img {
       display: block;
       width: 100%;
-      height: 100%;
+      max-height: 24px;
       object-fit: contain;
       filter: grayscale(12%);
       opacity: .88;
@@ -1133,7 +1133,7 @@
         padding-bottom: 6px;
       }
       .contributor-logo {
-        flex: 0 0 112px;
+        flex: 0 0 82px;
       }
     }
 
