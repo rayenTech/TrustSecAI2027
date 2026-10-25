@@ -1220,6 +1220,153 @@
     max-height: none !important;
   }
 }
+    
+/* ========================================
+   Conference Gallery
+======================================== */
+
+.conference-gallery {
+  padding: 80px 24px;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+.gallery-container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.gallery-heading {
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.gallery-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #2874c8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gallery-heading h2 {
+  margin: 0 0 16px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.gallery-heading p {
+  margin: 0;
+  color: #5b6578;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.gallery-item {
+  margin: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e5eaf2;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(25, 42, 70, 0.07);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(25, 42, 70, 0.13);
+}
+
+.gallery-item a {
+  display: block;
+  overflow: hidden;
+  background: #e8edf5;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-item figcaption {
+  padding: 16px 18px;
+  color: #25334a;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.gallery-footer {
+  margin-top: 42px;
+  padding: 28px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e5eaf2;
+  border-radius: 16px;
+}
+
+.gallery-footer p {
+  margin: 0 0 16px;
+  color: #4b5870;
+  line-height: 1.7;
+}
+
+.gallery-link {
+  display: inline-block;
+  color: #1769bd;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.gallery-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-item img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 560px) {
+  .conference-gallery {
+    padding: 56px 16px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gallery-item img {
+    height: 240px;
+  }
+
+  .gallery-footer {
+    padding: 22px 16px;
+  }
+}
+
 
 </style>
 </head>
@@ -1679,18 +1826,100 @@
     </section>
   </main>
 
-   <section class="conference-partners" aria-label="Conference partners and contributors">
-       <div class="container">
-         <div class="conference-partners-grid">
-           <img src="./Screenshot 2026-09-20 231737.png" alt="Conference contributor 1" loading="lazy">
-           <img src="./Screenshot 2026-09-20 231749.png" alt="Conference contributor 2" loading="lazy">
-           <img src="./Screenshot 2026-09-20 231807.png" alt="Conference contributor 3" loading="lazy">
-           <img src="./Screenshot 2026-09-20 231822.png" alt="Conference contributor 4" loading="lazy">
-           <img src="./Screenshot 2026-09-20 232113.png" alt="Conference contributor 5" loading="lazy">
-           <img src="./Screenshot 2026-09-20 232119.png" alt="Conference contributor 6" loading="lazy">
-       </div>
-         </div>
-   </section>
+   
+<!-- Conference Photos & Organizing Community -->
+<section class="conference-gallery" id="conference-gallery">
+  <div class="gallery-container">
+
+    <div class="gallery-heading">
+      <span class="gallery-eyebrow">ANT 2027 · Delft, Netherlands</span>
+      <h2>Conference Highlights</h2>
+      <p>
+        Discover moments, people, and activities related to the
+        International Conference on Ambient Systems, Networks and Technologies.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <figure class="gallery-item">
+        <a href="Screenshot%202026-09-20%20231737.png"
+           target="_blank" rel="noopener noreferrer">
+          <img src="Screenshot%202026-09-20%20231737.png"
+               alt="ANT conference highlight photograph 1"
+               loading="lazy">
+        </a>
+        <figcaption>Conference Highlights</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <a href="Screenshot%202026-09-20%20231749.png"
+           target="_blank" rel="noopener noreferrer">
+          <img src="Screenshot%202026-09-20%20231749.png"
+               alt="ANT conference highlight photograph 2"
+               loading="lazy">
+        </a>
+        <figcaption>Research and Innovation</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <a href="Screenshot%202026-09-20%20231807.png"
+           target="_blank" rel="noopener noreferrer">
+          <img src="Screenshot%202026-09-20%20231807.png"
+               alt="ANT conference highlight photograph 3"
+               loading="lazy">
+        </a>
+        <figcaption>Scientific Community</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <a href="Screenshot%202026-09-20%20231822.png"
+           target="_blank" rel="noopener noreferrer">
+          <img src="Screenshot%202026-09-20%20231822.png"
+               alt="ANT conference highlight photograph 4"
+               loading="lazy">
+        </a>
+        <figcaption>Conference Activities</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <a href="Screenshot%202026-09-20%20232113.png"
+           target="_blank" rel="noopener noreferrer">
+          <img src="Screenshot%202026-09-20%20232113.png"
+               alt="ANT conference highlight photograph 5"
+               loading="lazy">
+        </a>
+        <figcaption>Organizers and Participants</figcaption>
+      </figure>
+
+      <figure class="gallery-item">
+        <a href="Screenshot%202026-09-20%20232119.png"
+           target="_blank" rel="noopener noreferrer">
+          <img src="Screenshot%202026-09-20%20232119.png"
+               alt="ANT conference highlight photograph 6"
+               loading="lazy">
+        </a>
+        <figcaption>Academic Collaboration</figcaption>
+      </figure>
+
+    </div>
+
+    <div class="gallery-footer">
+      <p>
+        In conjunction with the
+        <strong>18th International Conference on Ambient Systems,
+        Networks and Technologies</strong>
+      </p>
+      <a href="https://cs-conferences.acadiau.ca/ant-27/"
+         target="_blank" rel="noopener noreferrer"
+         class="gallery-link">
+        Visit the ANT 2027 conference website →
+      </a>
+    </div>
+
+  </div>
+</section>
+
 
 
 
