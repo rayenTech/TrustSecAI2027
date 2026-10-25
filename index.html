@@ -930,27 +930,18 @@
     .contributor-logo {
       display: grid;
       place-items: center;
-      height: 34px;
-      padding: 4px 7px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 8px;
-      background: rgba(255,255,255,.035);
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
-
-    .contributor-logo:hover {
-      transform: translateY(-3px);
-      border-color: rgba(0,212,184,.45);
-      background: rgba(0,212,184,.07);
+      min-height: 28px;
+      padding: 0;
     }
 
     .contributor-logo img {
       display: block;
-      width: 100%;
+      width: auto;
+      max-width: 100%;
       max-height: 24px;
       object-fit: contain;
       filter: grayscale(12%);
-      opacity: .88;
+      opacity: .78;
       transition: filter .2s ease, opacity .2s ease;
     }
 
