@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="352" viewBox="0 0 1280 352" role="img" aria-label="TrustSecAI 2027: Beyond Detection. Toward Autonomous Defense.">
+  <defs>
+    <linearGradient id="back" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08162E"/>
+      <stop offset="0.55" stop-color="#0B2650"/>
+      <stop offset="1" stop-color="#06475C"/>
+    </linearGradient>
+    <linearGradient id="aqua" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#47E3E2"/>
+      <stop offset="1" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B65B1" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#0B294A" stop-opacity="0.95"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#9ACDFA" stroke-width="0.8" stroke-opacity="0.065" fill="none"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="352" rx="24" fill="url(#back)"/>
+  <rect width="1280" height="352" rx="24" fill="url(#grid)"/>
+  <circle cx="1073" cy="184" r="230" fill="#06B6D4" opacity="0.065"/>
+  <circle cx="1061" cy="170" r="160" fill="none" stroke="#70CCEF" opacity="0.15" stroke-width="1.5"/>
+  <circle cx="1061" cy="170" r="123" fill="none" stroke="#70CCEF" opacity="0.20" stroke-width="1.5" stroke-dasharray="6 12"/>
+  <circle cx="1061" cy="170" r="88" fill="none" stroke="#70CCEF" opacity="0.20" stroke-width="1.5"/>
+  <g fill="none" stroke="#3FD3E4" opacity="0.33" stroke-width="2">
+    <path d="M853 44L915 81L969 74"/>
+    <path d="M881 268L943 251L975 275"/>
+    <path d="M1112 42L1165 63L1216 39"/>
+    <path d="M1174 260L1215 292L1253 277"/>
+    <path d="M1206 127L1259 110"/>
+  </g>
+  <g fill="#52E3EB">
+    <circle cx="853" cy="44" r="4"/>
+    <circle cx="915" cy="81" r="4"/>
+    <circle cx="969" cy="74" r="4"/>
+    <circle cx="881" cy="268" r="4"/>
+    <circle cx="943" cy="251" r="4"/>
+    <circle cx="975" cy="275" r="4"/>
+    <circle cx="1112" cy="42" r="4"/>
+    <circle cx="1165" cy="63" r="4"/>
+    <circle cx="1216" cy="39" r="4"/>
+    <circle cx="1174" cy="260" r="4"/>
+    <circle cx="1215" cy="292" r="4"/>
+    <circle cx="1253" cy="277" r="4"/>
+  </g>
+  <g transform="translate(1058 166)">
+    <path d="M0 -104L79 -73V-8C79 65 32 100 0 116C-32 100-79 65-79-8V-73Z" fill="#53D9E5" opacity="0.16" filter="url(#glow)"/>
+    <path d="M0 -103L78 -72V-9C78 64 31 99 0 115C-31 99-78 64-78-9V-72Z" fill="url(#shield)" stroke="url(#aqua)" stroke-width="3"/>
+    <path d="M0 -81L56 -59V-10C56 43 24 72 0 87C-24 72-56 43-56-10V-59Z" fill="none" stroke="#80E9EE" stroke-opacity="0.26" stroke-width="2"/>
+    <rect x="-31" y="-12" width="62" height="54" rx="10" fill="#77E6F3"/>
+    <path d="M-19 -12V-29C-19 -55 19 -55 19 -29V-12" fill="none" stroke="#77E6F3" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="0" cy="11" r="7" fill="#10416B"/>
+    <path d="M0 15V27" stroke="#10416B" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <rect x="65" y="42" width="272" height="30" rx="15" fill="#0D4B65" stroke="#32B7D2" stroke-opacity="0.55"/>
+  <circle cx="84" cy="57" r="5" fill="#49E2D9"/>
+  <text x="99" y="62" font-family="Inter, Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="2" fill="#BBF7F5">INTERNATIONAL WORKSHOP · 2027</text>
+  <text x="62" y="164" font-family="Inter, Arial, Helvetica, sans-serif" font-size="76" font-weight="800" letter-spacing="-3.2" fill="#FFFFFF">TrustSec<tspan fill="#54DDE5">AI</tspan><tspan fill="#EAF7FF"> 2027</tspan></text>
+  <text x="66" y="215" font-family="Inter, Arial, Helvetica, sans-serif" font-size="25" font-weight="600" fill="#B9D8EC">AI Security &amp; Trustworthy Autonomous Cybersecurity</text>
+  <rect x="66" y="244" width="76" height="4" rx="2" fill="url(#aqua)"/>
+  <text x="66" y="287" font-family="Inter, Arial, Helvetica, sans-serif" font-size="23" font-weight="500" fill="#F2FAFF">Beyond Detection. <tspan fill="#65E8E8">Toward Autonomous Defense.</tspan></text>
+  <text x="67" y="324" font-family="Inter, Arial, Helvetica, sans-serif" font-size="15" fill="#9BBDD5" letter-spacing="0.3">13–15 APRIL 2027  ·  DELFT, NETHERLANDS</text>
+</svg>
