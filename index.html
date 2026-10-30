@@ -604,7 +604,22 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
+    
+    .submit-button {
+      display: inline-block;
+      background: #173b65;
+      color: #ffffff;
+      padding: 12px 26px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.3s ease;
+    }
 
+    .submit-button:hover {
+      background: #245789;
+    }
     .card {
       border: 1px solid var(--border);
       background: var(--card);
@@ -1419,10 +1434,17 @@
               <span>Paper length</span>
               <span class="tba">Up to 6 pages</span>
             </div>
-            <div class="deadline">
-              <span>Submission platform</span>
-              <span class="tba">https://easychair.org/conferences/?conf=trustsecai2027</span>
-            </div>
+          <div class="deadline">
+              <span>Submission Platform</span>
+              <a href="https://easychair.org/conferences/?conf=trustsecai2027"
+                 target="_blank"
+                 class="submit-button">
+               Submit Your Paper →
+              </a>
+          </div>
+              
+              
+            
             <div class="deadline">
               <span class="deadline-label">Paper submission deadline</span>
               <span class="tba">27 November 2026</span>
